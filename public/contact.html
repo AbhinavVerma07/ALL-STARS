@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - ALL STARS Football Academy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="background-container">
+    <div class="overlay"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="ALL STARS Football Academy Logo">
+      <h1>ALL STARS</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="stats.html">Player Stats</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-hero">
+      <h2>Contact Us</h2>
+      <p>We'd love to hear from you! Reach out with any questions about our programs, facilities, or enrollment.</p>
+    </section>
+
+    <section class="contact-info">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Visit Us</h3>
+          <p>123 Stadium Road<br>Sportsville, SP 12345</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3>Call Us</h3>
+          <p>Main: (123) 456-7890<br>Admissions: (123) 456-7891</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email Us</h3>
+          <p>info@allstarsacademy.com<br>admissions@allstarsacademy.com</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Office Hours</h3>
+          <p>Monday-Friday: 9am-6pm<br>Saturday: 10am-2pm</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-form-section">
+      <div class="contact-container">
+        <div class="contact-form-wrapper">
+          <h2>Send Us a Message</h2>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn-submit">Send Message</button>
+            </div>
+          </form>
+          <div class="form-success" style="display: none;">
+            <div class="success-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for contacting us. We'll get back to you as soon as possible.</p>
+            <button class="btn-new-message">Send Another Message</button>
+          </div>
+          <div class="form-error" style="display: none;">
+            <div class="error-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>Oops! Something went wrong.</h3>
+            <p>There was an error sending your message. Please try again later.</p>
+            <button class="btn-try-again">Try Again</button>
+          </div>
+        </div>
+        <div class="contact-image">
+          <img src="/placeholder.svg?height=600&width=500" alt="Contact Us">
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <h2>Find Us</h2>
+      <div class="map-container">
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>Interactive map will be displayed here</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How can I enroll my child in the academy?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>To enroll your child, you can complete our online registration form or visit our admissions office during office hours. We'll schedule a skill assessment to determine the appropriate training group for your child.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What age groups do you accept?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>We accept players from ages 6 to 19, divided into appropriate age groups: U8, U10, U13, U15, U17, and U19.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What are the training schedules?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Training schedules vary by age group. Generally, younger groups train 2-3 times per week, while older groups train 3-5 times per week. Detailed schedules are provided upon enrollment.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer scholarships or financial aid?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we offer a limited number of scholarships and financial aid packages based on both financial need and player potential. Please contact our admissions office for more information.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What qualifications do your coaches have?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>All our coaches hold at minimum a UEFA B License or equivalent, with many holding UEFA A or Pro Licenses. Many are former professional players with extensive playing and coaching experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="ALL STARS Football Academy Logo">
+        <h3>ALL STARS Football Academy</h3>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="stats.html">Player Stats</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Stadium Road, Sportsville</p>
+        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+        <p><i class="fas fa-envelope"></i> info@allstarsacademy.com</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ALL STARS Football Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery - ALL STARS Football Academy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="background-container">
+    <div class="overlay"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="ALL STARS Football Academy Logo">
+      <h1>ALL STARS</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="stats.html">Player Stats</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery-hero">
+      <h2>Photo Gallery</h2>
+      <p>Capturing moments of excellence, teamwork, and passion at ALL STARS Football Academy</p>
+    </section>
+
+    <section class="gallery-filter">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="training">Training</button>
+        <button class="filter-btn" data-filter="matches">Matches</button>
+        <button class="filter-btn" data-filter="events">Events</button>
+        <button class="filter-btn" data-filter="facilities">Facilities</button>
+      </div>
+    </section>
+
+    <section class="gallery-grid">
+      <div class="gallery-item" data-category="training">
+        <img src="/placeholder.svg?height=400&width=600" alt="Training Session">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Technical Training</h3>
+            <p>U17 squad working on ball control and passing drills</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="matches">
+        <img src="/placeholder.svg?height=400&width=600" alt="Match Day">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Regional Tournament</h3>
+            <p>U15 team celebrating their championship win</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="events">
+        <img src="/placeholder.svg?height=400&width=600" alt="Award Ceremony">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Annual Awards Night</h3>
+            <p>Recognizing outstanding achievements of our players</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="facilities">
+        <img src="/placeholder.svg?height=400&width=600" alt="Training Grounds">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Main Training Pitch</h3>
+            <p>Our FIFA-standard natural grass pitch</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="training">
+        <img src="/placeholder.svg?height=400&width=600" alt="Fitness Session">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Strength & Conditioning</h3>
+            <p>Players working on their physical fitness</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="matches">
+        <img src="/placeholder.svg?height=400&width=600" alt="Match Action">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>League Match</h3>
+            <p>Intense action during a crucial league game</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="events">
+        <img src="/placeholder.svg?height=400&width=600" alt="Pro Visit">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Professional Player Visit</h3>
+            <p>International star sharing insights with our academy</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="facilities">
+        <img src="/placeholder.svg?height=400&width=600" alt="Indoor Facility">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Indoor Training Center</h3>
+            <p>Our climate-controlled facility for year-round training</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="training">
+        <img src="/placeholder.svg?height=400&width=600" alt="Goalkeeper Training">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Goalkeeper Session</h3>
+            <p>Specialized training for our goalkeepers</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="matches">
+        <img src="/placeholder.svg?height=400&width=600" alt="Team Huddle">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Pre-Match Huddle</h3>
+            <p>Team spirit before an important match</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="events">
+        <img src="/placeholder.svg?height=400&width=600" alt="Summer Camp">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Summer Training Camp</h3>
+            <p>Intensive development program during summer break</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="facilities">
+        <img src="/placeholder.svg?height=400&width=600" alt="Analysis Room">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h3>Video Analysis Room</h3>
+            <p>Where we review performances and tactics</p>
+          </div>
+          <button class="gallery-zoom"><i class="fas fa-search-plus"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="gallery-modal">
+      <span class="modal-close"><i class="fas fa-times"></i></span>
+      <img class="modal-image" src="/placeholder.svg" alt="Gallery Image">
+      <div class="modal-caption"></div>
+      <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="load-more-container">
+      <button class="load-more-btn">Load More</button>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="ALL STARS Football Academy Logo">
+        <h3>ALL STARS Football Academy</h3>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="stats.html">Player Stats</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Stadium Road, Sportsville</p>
+        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+        <p><i class="fas fa-envelope"></i> info@allstarsacademy.com</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ALL STARS Football Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>
+

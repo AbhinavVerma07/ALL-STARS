@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Stats - ALL STARS Football Academy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/stats.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="background-container">
+    <div class="overlay"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="ALL STARS Football Academy Logo">
+      <h1>ALL STARS</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="stats.html" class="active">Player Stats</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="stats-hero">
+      <h2>Player Statistics</h2>
+      <p>Track performance metrics and development progress of our academy players</p>
+    </section>
+
+    <section class="stats-filter">
+      <div class="filter-container">
+        <div class="search-box">
+          <input type="text" id="player-search" placeholder="Search player...">
+          <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="filter-dropdowns">
+          <select id="age-group-filter">
+            <option value="all">All Age Groups</option>
+            <option value="u13">U13</option>
+            <option value="u15">U15</option>
+            <option value="u17">U17</option>
+            <option value="u19">U19</option>
+          </select>
+          <select id="position-filter">
+            <option value="all">All Positions</option>
+            <option value="goalkeeper">Goalkeeper</option>
+            <option value="defender">Defender</option>
+            <option value="midfielder">Midfielder</option>
+            <option value="forward">Forward</option>
+          </select>
+          <select id="stat-sort">
+            <option value="name">Sort by Name</option>
+            <option value="goals">Sort by Goals</option>
+            <option value="assists">Sort by Assists</option>
+            <option value="appearances">Sort by Appearances</option>
+            <option value="rating">Sort by Rating</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-table-container">
+      <div class="stats-loading">
+        <div class="spinner"></div>
+        <p>Loading player statistics...</p>
+      </div>
+      <div class="stats-error" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <p>Error loading player statistics. Please try again later.</p>
+        <button id="retry-btn">Retry</button>
+      </div>
+      <table class="stats-table" style="display: none;">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Age Group</th>
+            <th>Position</th>
+            <th>Appearances</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Pass Accuracy</th>
+            <th>Rating</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody id="stats-table-body">
+          <!-- Player data will be loaded here dynamically -->
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button id="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+        <span id="page-info">Page 1 of 1</span>
+        <button id="next-page" disabled>Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <section class="player-spotlight">
+      <h2>Player Spotlight</h2>
+      <div class="spotlight-container">
+        <div class="spotlight-player">
+          <div class="player-image">
+            <img src="/placeholder.svg?height=400&width=300" alt="Player of the Month">
+          </div>
+          <div class="player-details">
+            <h3>Player of the Month</h3>
+            <h4 id="spotlight-name">James Wilson</h4>
+            <p id="spotlight-info">U17 | Forward</p>
+            <div class="player-stats-highlights">
+              <div class="stat-highlight">
+                <span class="stat-value" id="spotlight-goals">12</span>
+                <span class="stat-label">Goals</span>
+              </div>
+              <div class="stat-highlight">
+                <span class="stat-value" id="spotlight-assists">8</span>
+                <span class="stat-label">Assists</span>
+              </div>
+              <div class="stat-highlight">
+                <span class="stat-value" id="spotlight-rating">9.2</span>
+                <span class="stat-label">Rating</span>
+              </div>
+            </div>
+            <p id="spotlight-description">James has shown exceptional performance this month, scoring crucial goals in important matches and demonstrating outstanding leadership qualities on and off the pitch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-charts">
+      <h2>Performance Analytics</h2>
+      <div class="charts-container">
+        <div class="chart-card">
+          <h3>Goals by Age Group</h3>
+          <div class="chart-container" id="goals-chart">
+            <!-- Chart will be rendered here -->
+            <div class="chart-placeholder">
+              <i class="fas fa-chart-bar"></i>
+              <p>Chart visualization will appear here</p>
+            </div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>Position Distribution</h3>
+          <div class="chart-container" id="position-chart">
+            <!-- Chart will be rendered here -->
+            <div class="chart-placeholder">
+              <i class="fas fa-chart-pie"></i>
+              <p>Chart visualization will appear here</p>
+            </div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>Performance Trends</h3>
+          <div class="chart-container" id="performance-chart">
+            <!-- Chart will be rendered here -->
+            <div class="chart-placeholder">
+              <i class="fas fa-chart-line"></i>
+              <p>Chart visualization will appear here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="player-modal">
+      <div class="player-modal-content">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="player-modal-header">
+          <div class="player-modal-image">
+            <img src="/placeholder.svg?height=300&width=300" alt="Player" id="modal-player-image">
+          </div>
+          <div class="player-modal-info">
+            <h2 id="modal-player-name">Player Name</h2>
+            <p id="modal-player-details">Age Group | Position</p>
+            <div class="player-modal-stats">
+              <div class="modal-stat">
+                <span class="modal-stat-value" id="modal-appearances">0</span>
+                <span class="modal-stat-label">Appearances</span>
+              </div>
+              <div class="modal-stat">
+                <span class="modal-stat-value" id="modal-goals">0</span>
+                <span class="modal-stat-label">Goals</span>
+              </div>
+              <div class="modal-stat">
+                <span class="modal-stat-value" id="modal-assists">0</span>
+                <span class="modal-stat-label">Assists</span>
+              </div>
+              <div class="modal-stat">
+                <span class="modal-stat-value" id="modal-rating">0.0</span>
+                <span class="modal-stat-label">Rating</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="player-modal-body">
+          <div class="player-modal-tabs">
+            <button class="tab-btn active" data-tab="stats">Statistics</button>
+            <button class="tab-btn" data-tab="performance">Performance</button>
+            <button class="tab-btn" data-tab="development">Development</button>
+          </div>
+          <div class="player-modal-tab-content">
+            <div class="tab-pane active" id="stats-tab">
+              <div class="detailed-stats">
+                <div class="stat-group">
+                  <h3>Offensive</h3>
+                  <div class="stat-row">
+                    <span class="stat-name">Goals</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-goals" style="width: 70%;"></div>
+                      <span class="stat-value">70%</span>
+                    </div>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-name">Assists</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-assists" style="width: 60%;"></div>
+                      <span class="stat-value">60%</span>
+                    </div>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-name">Shot Accuracy</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-shot-accuracy" style="width: 65%;"></div>
+                      <span class="stat-value">65%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="stat-group">
+                  <h3>Defensive</h3>
+                  <div class="stat-row">
+                    <span class="stat-name">Tackles</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-tackles" style="width: 50%;"></div>
+                      <span class="stat-value">50%  style="width: 50%;"></div>
+                      <span class="stat-value">50%</span>
+                    </div>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-name">Interceptions</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-interceptions" style="width: 75%;"></div>
+                      <span class="stat-value">75%</span>
+                    </div>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-name">Aerial Duels</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-aerial-duels" style="width: 55%;"></div>
+                      <span class="stat-value">55%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="stat-group">
+                  <h3>Technical</h3>
+                  <div class="stat-row">
+                    <span class="stat-name">Pass Accuracy</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-pass-accuracy" style="width: 85%;"></div>
+                      <span class="stat-value">85%</span>
+                    </div>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-name">Dribbling</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-dribbling" style="width: 70%;"></div>
+                      <span class="stat-value">70%</span>
+                    </div>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-name">Ball Control</span>
+                    <div class="stat-bar-container">
+                      <div class="stat-bar" id="modal-stat-ball-control" style="width: 80%;"></div>
+                      <span class="stat-value">80%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="performance-tab">
+              <div class="performance-chart-container">
+                <div class="chart-placeholder">
+                  <i class="fas fa-chart-line"></i>
+                  <p>Performance chart will appear here</p>
+                </div>
+              </div>
+              <div class="performance-highlights">
+                <h3>Recent Highlights</h3>
+                <ul class="highlights-list">
+                  <li>
+                    <span class="highlight-date">May 15, 2025</span>
+                    <span class="highlight-event">Scored a hat-trick against Regional FC</span>
+                  </li>
+                  <li>
+                    <span class="highlight-date">May 8, 2025</span>
+                    <span class="highlight-event">Player of the match in the semi-final</span>
+                  </li>
+                  <li>
+                    <span class="highlight-date">April 30, 2025</span>
+                    <span class="highlight-event">Two assists in the quarter-final match</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="tab-pane" id="development-tab">
+              <div class="development-progress">
+                <h3>Development Goals</h3>
+                <div class="progress-item">
+                  <div class="progress-header">
+                    <span class="progress-title">Improve Weak Foot</span>
+                    <span class="progress-percentage">75%</span>
+                  </div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 75%;"></div>
+                  </div>
+                </div>
+                <div class="progress-item">
+                  <div class="progress-header">
+                    <span class="progress-title">Defensive Positioning</span>
+                    <span class="progress-percentage">60%</span>
+                  </div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 60%;"></div>
+                  </div>
+                </div>
+                <div class="progress-item">
+                  <div class="progress-header">
+                    <span class="progress-title">Set Piece Technique</span>
+                    <span class="progress-percentage">85%</span>
+                  </div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 85%;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="coach-notes">
+                <h3>Coach's Notes</h3>
+                <div class="note">
+                  <p class="note-date">May 20, 2025</p>
+                  <p class="note-content">Showing excellent progress in decision-making. Needs to work on defensive transitions and positioning when the team loses possession.</p>
+                </div>
+                <div class="note">
+                  <p class="note-date">April 15, 2025</p>
+                  <p class="note-content">Technical ability is outstanding. Focus on building physical strength and endurance for the upcoming season.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="ALL STARS Football Academy Logo">
+        <h3>ALL STARS Football Academy</h3>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="stats.html">Player Stats</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Stadium Road, Sportsville</p>
+        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+        <p><i class="fas fa-envelope"></i> info@allstarsacademy.com</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ALL STARS Football Academy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/stats.js"></script>
+</body>
+</html>
+

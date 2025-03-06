@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - ALL STARS Football Academy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <div class="user-profile">
+          <div class="user-avatar">
+            <img src="/placeholder.svg?height=80&width=80" alt="User Avatar">
+          </div>
+          <div class="user-info">
+            <h3 id="user-name">John Doe</h3>
+            <p id="user-role">Player - U17</p>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="active">
+            <a href="#overview">
+              <i class="fas fa-home"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="#my-stats">
+              <i class="fas fa-chart-line"></i>
+              <span>My Stats</span>
+            </a>
+          </li>
+          <li>
+            <a href="#training">
+              <i class="fas fa-running"></i>
+              <span>Training</span>
+            </a>
+          </li>
+          <li>
+            <a href="#schedule">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Schedule</span>
+            </a>
+          </li>
+          <li>
+            <a href="#messages">
+              <i class="fas fa-envelope"></i>
+              <span>Messages</span>
+              <span class="badge">3</span>
+            </a>
+          </li>
+          <li>
+            <a href="#resources">
+              <i class="fas fa-book"></i>
+              <span>Resources</span>
+            </a>
+          </li>
+          <li>
+            <a href="#settings">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logout-btn">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2>Dashboard</h2>
+        </div>
+        <div class="header-right">
+          <div class="notifications">
+            <button class="notification-btn">
+              <i class="fas fa-bell"></i>
+              <span class="badge">2</span>
+            </button>
+            <div class="notification-dropdown">
+              <div class="notification-header">
+                <h3>Notifications</h3>
+                <button class="mark-all-read">Mark all as read</button>
+              </div>
+              <ul class="notification-list">
+                <li class="unread">
+                  <div class="notification-icon">
+                    <i class="fas fa-calendar-check"></i>
+                  </div>
+                  <div class="notification-content">
+                    <p>Training session scheduled for tomorrow at 4 PM</p>
+                    <span class="notification-time">2 hours ago</span>
+                  </div>
+                </li>
+                <li class="unread">
+                  <div class="notification-icon">
+                    <i class="fas fa-trophy"></i>
+                  </div>
+                  <div class="notification-content">
+                    <p>Congratulations! You've been selected for the upcoming tournament</p>
+                    <span class="notification-time">1 day ago</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="notification-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="notification-content">
+                    <p>Your performance stats have been updated</p>
+                    <span class="notification-time">3 days ago</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="notification-footer">
+                <a href="#notifications">View all notifications</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+        <section id="overview" class="dashboard-section active">
+          <div class="section-header">
+            <h2>Overview</h2>
+            <p>Welcome back, <span id="welcome-name">John</span>! Here's your performance summary.</p>
+          </div>
+          
+          <div class="stats-summary">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-futbol"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Goals</h3>
+                <p class="stat-value">12</p>
+                <p class="stat-change positive">+3 from last month</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-hands-helping"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Assists</h3>
+                <p class="stat-value">8</p>
+                <p class="stat-change positive">+2 from last month</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-stopwatch"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Minutes Played</h3>
+                <p class="stat-value">540</p>
+                <p class="stat-change positive">+90 from last month</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Rating</h3>
+                <p class="stat-value">8.5</p>
+                <p class="stat-change positive">+0.3 from last month</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-row">
+            <div class="dashboard-card upcoming-events">
+              <div class="card-header">
+                <h3>Upcoming Events</h3>
+                <a href="#schedule" class="view-all">View All</a>
+              </div>
+              <ul class="event-list">
+                <li class="event-item">
+                  <div class="event-date">
+                    <span class="day">15</span>
+                    <span class="month">JUN</span>
+                  </div>
+                  <div class="event-details">
+                    <h4>Training Session</h4>
+                    <p><i class="fas fa-clock"></i> 4:00 PM - 6:00 PM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Main Field</p>
+                  </div>
+                </li>
+                <li class="event-item">
+                  <div class="event-date">
+                    <span class="day">18</span>
+                    <span class="month">JUN</span>
+                  </div>
+                  <div class="event-details">
+                    <h4>Match vs. United FC</h4>
+                    <p><i class="fas fa-clock"></i> 2:00 PM - 4:00 PM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> City Stadium</p>
+                  </div>
+                </li>
+                <li class="event-item">
+                  <div class="event-date">
+                    <span class="day">22</span>
+                    <span class="month">JUN</span>
+                  </div>
+                  <div class="event-details">
+                    <h4>Fitness Assessment</h4>
+                    <p><i class="fas fa-clock"></i> 10:00 AM - 12:00 PM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Performance Center</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="dashboard-card coach-feedback">
+              <div class="card-header">
+                <h3>Coach's Feedback</h3>
+                <span class="feedback-date">Last updated: June 10, 2025</span>
+              </div>
+              <div class="feedback-content">
+                <p>John has shown significant improvement in his technical skills over the past month. His passing accuracy has increased, and he's making better decisions in the final third.</p>
+                <p>Areas to focus on:</p>
+                <ul>
+                  <li>Defensive positioning when the team loses possession</li>
+                  <li>First touch control under pressure</li>
+                  <li>Maintaining stamina in the final 15 minutes</li>
+                </ul>
+                <div class="coach-signature">
+                  <img src="/placeholder.svg?height=40&width=40" alt="Coach">
+                  <p>Coach David Thompson</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-row">
+            <div class="dashboard-card performance-chart">
+              <div class="card-header">
+                <h3>Performance Trends</h3>
+                <div class="chart-controls">
+                  <select id="chart-metric">
+                    <option value="rating">Rating</option>
+                    <option value="goals">Goals</option>
+                    <option value="assists">Assists</option>
+                  </select>
+                  <select id="chart-period">
+                    <option value="3months">Last 3 Months</option>
+                    <option value="6months">Last 6 Months</option>
+                    <option value="year">Last Year</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-container">
+                <div class="chart-placeholder">
+                  <i class="fas fa-chart-line"></i>
+                  <p>Performance chart will appear here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Other sections would be added here but are hidden by default -->
+      </div>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
+
