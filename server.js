@@ -1,24 +1,46 @@
 import express from "express";
 import session from "express-session";
 import path from "path";
-import fs from "fs";
 import { fileURLToPath } from "url";
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
+import expressLayouts from "express-ejs-layouts";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
 
 import authRoutes from "./routes/auth.js";
-import playerRoutes from "./routes/players.js";
+import dashboardRoutes from "./routes/dashboard.js";
 import contactRoutes from "./routes/contact.js";
+import indexRoutes from "./routes/index.js";
+import playerRoutes from "./routes/players.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Fix for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/allstars')
+  .then(() => {
+    console.log('✅ Connected to MongoDB');
+  })
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err);
+  });
+
+// View engine setup
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(expressLayouts);
+app.set('layout', 'layout');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,7 +48,7 @@ app.use(cookieParser());
 
 app.use(
   session({
-    secret: "allstars_football_academy_secret",
+    secret: process.env.SESSION_SECRET || "allstars_football_academy_secret",
     resave: false,
     saveUninitialized: false,
     cookie: { secure: process.env.NODE_ENV === "production", maxAge: 86400000 },
@@ -42,28 +64,27 @@ app.use(limiter);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-const isAuthenticated = (req, res, next) => (req.session.user ? next() : res.redirect("/login.html"));
-
-app.use("/api/auth", authRoutes);
-app.use("/api/players", playerRoutes);
-app.use("/api/contact", contactRoutes);
-
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
-app.get("/dashboard", isAuthenticated, (req, res) => res.sendFile(path.join(__dirname, "public", "dashboard.html")));
-
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ status: "error", message: "Something went wrong on the server" });
+// Make user available to all views
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
 });
 
-app.use((req, res) => res.status(404).sendFile(path.join(__dirname, "public", "404.html")));
+const isAuthenticated = (req, res, next) => (req.session.user ? next() : res.redirect("/login"));
 
-const dataDir = path.join(__dirname, "data");
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir);
-  ["users.json", "players.json", "contacts.json"].forEach((file) => {
-    fs.writeFileSync(path.join(dataDir, file), JSON.stringify([], null, 2));
-  });
-}
+// Routes
+app.use('/', indexRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/dashboard', dashboardRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/players', playerRoutes);
+
+// Error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).render("error", { error: "Something went wrong on the server" });
+});
+
+app.use((req, res) => res.status(404).render("404"));
 
 app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));

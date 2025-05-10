@@ -1,0 +1,117 @@
+<div class="dashboard-container">
+    <h1>Welcome, <%= user.username %></h1>
+    
+    <section class="dashboard-section">
+        <h2>Player Management</h2>
+        <div class="action-buttons">
+            <button onclick="showAddPlayerForm()" class="btn-primary">Add New Player</button>
+        </div>
+        
+        <div id="players-list" class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Position</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% players.forEach(player => { %>
+                        <tr>
+                            <td><%= player.name %></td>
+                            <td><%= player.age %></td>
+                            <td><%= player.position %></td>
+                            <td><%= player.status %></td>
+                            <td>
+                                <button onclick="editPlayer('<%= player._id %>')" class="btn-secondary">Edit</button>
+                                <button onclick="deletePlayer('<%= player._id %>')" class="btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <h2>Recent Contacts</h2>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% contacts.forEach(contact => { %>
+                        <tr>
+                            <td><%= contact.name %></td>
+                            <td><%= contact.email %></td>
+                            <td><%= new Date(contact.createdAt).toLocaleDateString() %></td>
+                            <td><%= contact.status %></td>
+                            <td>
+                                <button onclick="viewContact('<%= contact._id %>')" class="btn-secondary">View</button>
+                                <button onclick="updateContactStatus('<%= contact._id %>')" class="btn-primary">Update Status</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- Add Player Modal -->
+<div id="addPlayerModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add New Player</h2>
+        <form id="addPlayerForm">
+            <div class="form-group">
+                <label for="playerName">Name</label>
+                <input type="text" id="playerName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="playerAge">Age</label>
+                <input type="number" id="playerAge" name="age" min="5" max="18" required>
+            </div>
+            <div class="form-group">
+                <label for="playerPosition">Position</label>
+                <select id="playerPosition" name="position" required>
+                    <option value="Goalkeeper">Goalkeeper</option>
+                    <option value="Defender">Defender</option>
+                    <option value="Midfielder">Midfielder</option>
+                    <option value="Forward">Forward</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="skillLevel">Skill Level</label>
+                <select id="skillLevel" name="skillLevel" required>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="tel" id="contactNumber" name="contactNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="parentName">Parent Name</label>
+                <input type="text" id="parentName" name="parentName" required>
+            </div>
+            <div class="form-group">
+                <label for="parentContact">Parent Contact</label>
+                <input type="tel" id="parentContact" name="parentContact" required>
+            </div>
+            <button type="submit" class="btn-primary">Add Player</button>
+        </form>
+    </div>
+</div> 

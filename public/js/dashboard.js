@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Check if user is logged in
-    fetch("/api/auth/me")
+    fetch("/dashboard/api/auth/me")
       .then((response) => {
         if (!response.ok) {
           // Redirect to login page if not authenticated
-          window.location.href = "/login.html"
+          window.location.href = "/login"
           return null
         }
         return response.json()
@@ -13,15 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data && data.data) {
           // Update user info
           const user = data.data
-          document.getElementById("user-name").textContent = user.name
+          document.getElementById("user-name").textContent = user.username
           document.getElementById("user-role").textContent = user.role
-          document.getElementById("welcome-name").textContent = user.name.split(" ")[0]
+          document.getElementById("welcome-name").textContent = user.username
         }
       })
       .catch((error) => {
         console.error("Error checking authentication:", error)
         // Redirect to login page on error
-        window.location.href = "/login.html"
+        window.location.href = "/login"
       })
   
     // Mobile sidebar toggle
@@ -87,15 +87,94 @@ document.addEventListener("DOMContentLoaded", () => {
           .then((data) => {
             if (data.status === "success") {
               // Redirect to login page
-              window.location.href = "/login.html"
+              window.location.href = "/login"
             }
           })
           .catch((error) => {
             console.error("Error logging out:", error)
             // Redirect to login page anyway
-            window.location.href = "/login.html"
+            window.location.href = "/login"
           })
       })
+    }
+  
+    // Player Management
+    const addPlayerForm = document.getElementById("addPlayerForm")
+    if (addPlayerForm) {
+      addPlayerForm.addEventListener("submit", async (e) => {
+        e.preventDefault()
+        const formData = new FormData(addPlayerForm)
+        const playerData = Object.fromEntries(formData.entries())
+  
+        try {
+          const response = await fetch("/dashboard/api/players", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(playerData),
+          })
+  
+          const data = await response.json()
+          if (data.status === "success") {
+            window.location.reload()
+          } else {
+            alert("Failed to add player: " + data.message)
+          }
+        } catch (error) {
+          console.error("Error adding player:", error)
+          alert("Failed to add player. Please try again.")
+        }
+      })
+    }
+  
+    // Delete player
+    window.deletePlayer = async (playerId) => {
+      if (!confirm("Are you sure you want to delete this player?")) {
+        return
+      }
+  
+      try {
+        const response = await fetch(`/dashboard/api/players/${playerId}`, {
+          method: "DELETE",
+        })
+  
+        const data = await response.json()
+        if (data.status === "success") {
+          window.location.reload()
+        } else {
+          alert("Failed to delete player: " + data.message)
+        }
+      } catch (error) {
+        console.error("Error deleting player:", error)
+        alert("Failed to delete player. Please try again.")
+      }
+    }
+  
+    // Update contact status
+    window.updateContactStatus = async (contactId) => {
+      const status = prompt("Enter new status (New, In Progress, Resolved):")
+      if (!status) return
+  
+      try {
+        const response = await fetch(`/dashboard/api/contacts/${contactId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status }),
+        })
+  
+        const data = await response.json()
+        if (data.status === "success") {
+          window.location.reload()
+        } else {
+          alert("Failed to update contact: " + data.message)
+        }
+      } catch (error) {
+        console.error("Error updating contact:", error)
+        alert("Failed to update contact. Please try again.")
+      }
     }
   
     // Notifications
@@ -104,32 +183,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const markAllReadBtn = document.querySelector(".mark-all-read")
   
     if (notificationBtn && notificationDropdown) {
-      // Toggle notification dropdown on click
-      notificationBtn.addEventListener("click", (e) => {
-        e.stopPropagation()
-        notificationDropdown.classList.toggle("show")
+      notificationBtn.addEventListener("click", () => {
+        notificationDropdown.classList.toggle("active")
       })
   
       // Close dropdown when clicking outside
-      document.addEventListener("click", (e) => {
-        if (!notificationDropdown.contains(e.target) && !notificationBtn.contains(e.target)) {
-          notificationDropdown.classList.remove("show")
+      document.addEventListener("click", (event) => {
+        if (
+          !event.target.closest(".notification-btn") &&
+          !event.target.closest(".notification-dropdown")
+        ) {
+          notificationDropdown.classList.remove("active")
         }
       })
+    }
   
-      // Mark all notifications as read
-      if (markAllReadBtn) {
-        markAllReadBtn.addEventListener("click", () => {
-          document.querySelectorAll(".notification-list li.unread").forEach((notification) => {
-            notification.classList.remove("unread")
-          })
-  
-          // Update badge count
-          const badge = notificationBtn.querySelector(".badge")
-          badge.textContent = "0"
-          badge.style.display = "none"
+    if (markAllReadBtn) {
+      markAllReadBtn.addEventListener("click", () => {
+        const unreadNotifications = document.querySelectorAll(".notification-item.unread")
+        unreadNotifications.forEach((notification) => {
+          notification.classList.remove("unread")
         })
-      }
+      })
     }
   
     // Chart controls
