@@ -19,13 +19,18 @@
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
     "helmet": "^8.0.0",
-    "mongoose": "^8.1.0",
+    "mongoose": "^8.14.2",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
-  "keywords": ["football", "academy", "express", "node"],
+  "keywords": [
+    "football",
+    "academy",
+    "express",
+    "node"
+  ],
   "author": "",
   "license": "ISC"
 }
