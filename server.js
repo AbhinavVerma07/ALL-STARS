@@ -59,10 +59,38 @@ app.use(morgan("dev"));
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors());
 
-const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100, standardHeaders: true, legacyHeaders: false });
-app.use(limiter);
+// Create different rate limiters for different routes
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 1000, // 1000 requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: 'Too many requests from this IP, please try again later.'
+});
 
-app.use(express.static(path.join(__dirname, "public")));
+const authLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 50, // 50 requests per hour
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: 'Too many login attempts, please try again later.'
+});
+
+const staticLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5000, // 5000 requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false
+});
+
+// Apply rate limiting to specific routes
+app.use('/api/', apiLimiter);
+app.use('/api/auth', authLimiter);
+app.use(express.static(path.join(__dirname, "public"), {
+    maxAge: '1h', // Cache static files for 1 hour
+    etag: true,
+    lastModified: true
+}));
 
 // Make user available to all views
 app.use((req, res, next) => {

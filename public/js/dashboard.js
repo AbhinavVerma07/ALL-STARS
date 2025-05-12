@@ -251,6 +251,49 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.transform = "translateY(20px)"
       card.style.transition = "opacity 0.5s ease, transform 0.5s ease"
     })
+  
+    // Tab switching functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+  
+    // Function to switch tabs
+    function switchTab(tabId) {
+        // Hide all tab contents
+        tabContents.forEach(content => {
+            content.style.display = 'none';
+        });
+  
+        // Remove active class from all buttons
+        tabButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+  
+        // Show selected tab content
+        const selectedContent = document.getElementById(tabId);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+  
+        // Add active class to selected button
+        const selectedButton = document.querySelector(`[data-tab="${tabId}"]`);
+        if (selectedButton) {
+            selectedButton.classList.add('active');
+        }
+    }
+  
+    // Add click event listeners to tab buttons
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            switchTab(tabId);
+        });
+    });
+  
+    // Show default tab on page load
+    const defaultTab = document.querySelector('.tab-button');
+    if (defaultTab) {
+        switchTab(defaultTab.getAttribute('data-tab'));
+    }
   })
   
   
